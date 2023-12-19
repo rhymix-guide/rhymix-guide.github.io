@@ -1,0 +1,62 @@
+# Router
+
+::: danger
+이 문서는 초안을 작성중인 문서이다.
+:::
+
+## 예약어
+
+- $document_srl:int
+  - $document_srl:int/comment/$comment_srl:int
+  - $document_srl:int/page/$page:int
+  - $document_srl/comment
+  - $document_srl/delete
+  - $document_srl/edit
+- active_logins
+- auth/$member_srl/$auth_key
+- category/$category:int
+  - category/$category:int/page/$page:int
+  - category/$category:int/search/$search_target:word/$search_keyword:any
+  - category/$category:int/search/$search_target:word/$search_keyword:any/page/
+- comment/$comment_srl/delete
+  - comment/$comment_srl/delete$document_srl:delete
+  - comment/$comment_srl/edit
+  - comment/$comment_srl/edit$document_srl:delete
+  - comment/$comment_srl/reply
+  - comment/$comment_srl/reply$document_srl:delete
+- device/login
+  - device/register
+  - device/unregister
+- friends
+  - friends/add
+  - friends/addGroup
+- login
+  - login$document_srl:delete
+  - login$document_srl:delete$page:delete
+  - login$member_srl:delete
+  - login$page:delete
+- member_info
+- messages
+  - messages/$message_srl:int
+  - messages/boxes
+  - messages/new
+  - messages/send
+  - messages/type/$message_type:word
+  - messages/type/$message_type:word/$message_srl:int
+- my_comments
+  - my_documents
+  - my_saved_documents
+  - my_scrap
+- notifications
+  - notififcations/config
+  - notififcations/unsubscribe
+  - notififcations/unsubscribe/add
+- page/$page:int
+- search/$search_target:word/$search_keyword:any
+  - search/$search_target:word/$search_keyword:any/page/$page:int
+- signup
+  - signup$document_srl:delete
+  - signup$document_srl:delete$page:delete
+  - signup$member_srl:delete
+  - signup$page:delete
+- write
