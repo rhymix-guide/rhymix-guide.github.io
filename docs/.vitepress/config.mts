@@ -27,6 +27,10 @@ export default mergeConfig(customConfig, defineConfig({
       'meta',
       { name: 'google-site-verification', content: 'zxNvFXHnilnwtr39rTNOFwgfG4lsyDevcbXIcC0FZS0' }
     ],
+    [
+      'meta',
+      { name: 'naver-site-verification', content: 'b0cdbccb84b0ce74ae0d8596bc69ec8fa26e2ff3' }
+    ],
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
