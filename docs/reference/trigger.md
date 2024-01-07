@@ -47,7 +47,6 @@
 - 이벤트 핸들러에 등록했던 이벤트를 모두 제거할 수 없다.  
   -> 관련 이슈 참고: https://github.com/rhymix/rhymix/issues/2259
   - 이벤트 핸들러에 등록했던 이벤트를 모두 제거하려면 기존의 트리거 삭제 기능을 이용해야 한다.  
-    -> 참고: [트리거](reference/trigger)
     - `beforeAction`과 `afterAction`은 `act:모듈이름:메소드이름`으로 삭제할 수 있으며, `before`와 `after`는 이벤트 이름과 같다.
 
 :::
