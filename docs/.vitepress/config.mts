@@ -208,6 +208,13 @@ export default mergeConfig(customConfig, defineConfig({
       ],
     },
 
+    lastUpdated: {
+      formatOptions: {
+        dateStyle: 'long',
+        timeStyle: undefined,
+      }
+    },
+
     search: {
       provider: 'local'
     },
@@ -229,6 +236,5 @@ export default mergeConfig(customConfig, defineConfig({
   },
   sitemap: {
     hostname: 'https://rhymix-guide.github.io/',
-    
   },
 }))
