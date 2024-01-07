@@ -22,6 +22,7 @@ export default mergeConfig(customConfig, defineConfig({
   titleTemplate: ':title - 라이믹스 가이드',
   description: "라이믹스 가이드",
   base: '/',
+  lastUpdated: true,
   head: [
     [
       'meta',
@@ -228,5 +229,6 @@ export default mergeConfig(customConfig, defineConfig({
   },
   sitemap: {
     hostname: 'https://rhymix-guide.github.io/',
+    
   },
 }))
