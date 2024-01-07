@@ -5,10 +5,10 @@ outline: [2, 4]
 # 모듈 정보 및 설정
 
 ::: danger
-이 문서는 초안을 작성중인 문서이다.
+🚧 이 문서는 초안을 작성중인 문서이다.
 :::
 
-## 모듈 정보 (info.xml) <Badge type="danger" text="초안 작성중" />
+## 모듈 정보 (info.xml) <Badge type="danger" text="🚧 초안 작성중" />
 
 `info.xml`에서 `<module>` 최상위 노드를 사용하여 모듈의 정보를 정의한다. 모듈 정보는 `info.xml` 파일의 공통 속성에 추가로 `<category>` 항목을 정의할 수 있다.
 
@@ -46,144 +46,160 @@ outline: [2, 4]
 | system       |     |
 | utility      |     |
 
-## 모듈 설정 (module.xml) <Badge type="danger" text="초안 작성중" />
+## 모듈 설정 (module.xml) <Badge type="danger" text="🚧 초안 작성중" />
 
-### 네임스페이스 (namespaces) <Badge type="tip" text="Since v2.1.?" />
+### 커스텀 네임스페이스 (namespaces) <Badge type="tip" text="Since v2.1.3" />
 
-라이믹스는 2.1.3부터 네임스페이스를 지원한다. 모듈은 `Rhymix\Modules\모듈이름` 네임스페이스가 기본으로 사용된다. 클래스 오토로드를 위해 사용되며 `Rhymix\Modules\Example1` 네임스페이스는 `modules/example1` 디렉토리를 가리킨다.
+라이믹스는 2.1.3부터 네임스페이스를 지원한다.
 
-기본 네임스페이스에 더해 `<namespaces>` 요소를 사용하여 네임스페이스를 추가할 수 있으며, 기본 네임스페이스와 마찬가지로 해당 모듈의 디렉토리를 가리키며 오토로드에 사용된다.
+모듈은 `Rhymix\Modules\모듈이름` 네임스페이스가 기본으로 사용된다. 클래스 파일의 autoload를 위해 사용되며 `Rhymix\Modules\Example1` 네임스페이스는 `modules/example1` 디렉토리를 가리킨다.
+
+기본 네임스페이스에 대한 별칭으로 `<namespaces>` 요소를 사용하여 네임스페이스를 추가할 수 있다. 기본 네임스페이스처럼 해당 모듈의 디렉토리를 가리키며 autoload에 사용된다.
 
 ```xml
-<namespaces>
-    <namespace name="VendorName\Extension" />
-</namespaces>
+<!-- modules/example1/conf/module.xml -->
+<module>
+    <namespaces>
+        <!-- `name` 속성에 네임스페이스를 지정 -->
+        <namespace name="VendorName\Example1" />
+    </namespaces>
+</module>
 ```
 
-::: warning
-어떤 이름을 지정하더라도 해당 모듈의 디렉토리를 가리키지만 `Rhymix\*`로 시작하는 네임스페이스를 사용하지 않도록 하자.
+```php
+// 기본 네임스페이스
+use Rhymix\Modules\Example1\Models\ConfigModel;
+//         modules/example1/models/ConfigModel.php
+---------------------------^
+
+// 예시한 커스텀 네임스페이스
+use VendorName\Example1\Models\ConfigModel;
+//     modules/example1/models/ConfigModel.php
+-----------------------^
+```
+
+기본 네임스페이스와 커스텀 네임스페이스 모두 `modules/example1/models/ConfigModel.php` 파일을 가리킨다. 디렉토리는 반드시 소문자만 사용해야 하며, 파일명은 CamelCase를 사용하는 것을 권장한다. 필요하다면 디렉토리에 snake_case를 사용할 수 있다.
+
+::: tip -> [네임스페이스와 autoload 자세히 알아보기](/reference/namespace-and-autoload)
 :::
 
-### 클래스 (classes) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="초안 작성중" />
+---
+
+### 최상위 클래스 (classes) <Badge type="tip" text="Since v2.1.3" />
+
+모듈의 최상위 클래스를 정의하는데 사용한다.
+이 최상위 클래스는 모듈의 설치나 업데이트를 위한 구성을 정의하거나 모듈을 구성하는 정보를 담는 객체를 생성하는데 사용된다.
 
 ```xml
 <classes>
-    <class type="default" name="Src\Module" />
-    <class type="install" name="Src\Module" />
+    <!-- `name` 속성에 `src/ModuleBase.php` 파일을 지정한 예시 -->
+    <class type="default" name="Src\ModuleBase" />
+    <class type="install" name="Src\ModuleBase" />
 </classes>
 ```
 
-### 액션 (Action) <Badge type="danger" text="초안 작성중" />
+최상위 클래스로 사용되는 `default`와 설치와 업데이트 관리에 사용되는 `install` 클래스를 분리하여 지정할 수 있다.
 
-액션은 요청을 처리하기위해 수신하는 모듈의 메서드이다. 액션은 모듈의 고유한 이름을 포함한 이름을 가진다.
+`name` 속성에 네임스페이스로 클래스를 지정할 수 있으며, `Rhymix\Modules\모듈이름` 또는 커스텀 네이스페이스로 지정한 전체 네임스페이스 이름에서 생략한 이름을 사용할 수 있다.
+
+이 클래스들은 라이믹스의 `\ModuleObject` 클래스를 상속해야 한다.
+
+```php
+// src/ModuleBase.php
+
+namespace Rhymix\Modules\Example1\Src;
+
+// `\ModuleObject` 클래스를 상속
+class ModuleBase extends \ModuleObject
+{
+    // ...
+}
+```
+
+::: info
+이 두 클래스에는 메소드를 정의하는 등 클래스의 구성요소가 많지 않으므로 같은 클래스를 사용해도 좋으며, 필요 시 분리하여 사용해도 된다.
+:::
+
+---
+
+### 액션 정의 (actions)
+
+`<actions>` 항목은 요청을 처리하는 클래스와 메소드를 가리킨다.  
+`https://hostname/index.php?module=모듈이름&act=액션이름` 이와 같은 주소에 접근하면, `module`과 `act` 파라미터로 모듈을 찾아 `<action>` 항목에 지정된 메소드를 실행한다.
+
+`class`에는 실행된 클래스의 네임스페이스를 포함하는 클래스 이름을 지정하고, `name`에는 실행될 메소드의 이름을 지정한다.
 
 ```xml
 <actions>
-    <!-- 관리자 페이지의 인덱스 액션 (admin-index) -->
+    <!-- `example1` 모듈의 `dispExample1AdminConfig` 액션 정의 -->
     <action
-        name="dispExample1AdminIndex"
-        class="Controllers\Admin"
-        admin-index="true" />
+        name="dispExample1AdminConfig"
+        class="Controllers\AdminController" />
 
-    <!-- 사용자 페이지의 인덱스 액션 (idex) -->
+    <!-- `example1` 모듈의 `dispExample1Index` 액션 정의 -->
     <action
         name="dispExample1Index"
-        class="Controllers\Common"
-        idex="true" />
+        class="Controllers\CommonController" />
 </actions>
 ```
 
-| 속성                                             | 설명                   | 요구 버전 |
-| ------------------------------------------------ | ---------------------- | --------- |
-| [name](#action-name)                             | 액션의 이름            | >=        |
-| [admin-index](#action-admin-index)               |                        | >=        |
-| [cache-control](#action-cache-control)           |                        |           |
-| [check_var](#action-check-var)                   |                        | >=        |
-| [check-csrf](#action-check-csrf)                 |                        | >=        |
-| [class](#action-type-or-class)                   | 액션을 처리하는 클래스 | >= v2.1   |
-| [error-handlers](#action-error-handlers)         |                        | >=        |
-| [global_route](#action-global-route)             |                        | >=        |
-| [index](#action-index)                           |                        |           |
-| [menu_index](#action-menu-index)                 |                        | >=        |
-| [menu_name](#action-menu-name)                   |                        | >=        |
-| [meta-noindex](#action-meta-noindex)             |                        | >=        |
-| [method](#action-method)                         |                        | >=        |
-| [permissions](#action-permissions)               | 권한 설정              | >=        |
-| [route](#action-route)                           |                        | >=        |
-| [ruleset](#action-ruleset)                       |                        | >=        |
-| [session](#action-session)                       |                        |           |
-| [setup_index](#action-setup-index)               |                        |           |
-| [simple_setup_index](#action-simple-setup-index) |                        |           |
-| [standalone](#action-standalone)                 |                        | >=        |
-| [type](#action-type-or-class)                    |                        | >=        |
+::: code-group
 
-#### 필수 속성
+```php [src/controllers/AdminController.php]
+// index.php?module=example&act=dispExample1AdminConfig
 
-액션의 이름(`name`)은 필수 속성이며, `type` 또는 `class` 속성 중 하나를 선택하여 지정해야 한다.
+namespace Rhymix\Modules\Example1\Src\Controllers;
 
-##### name {#action-name}
+class AdminController extends \ModuleObject
+{
+    public function dispExample1AdminConfig()
+    {
+        // 실행할 코드
+    }
+}
+```
 
-URL로 요청되어 호출된 메소드의 이름이다. 액션 이름은 `(disp|proc|get)` + `모듈명` + `액션` 조합의 문자열이며, URL에 `act` 파라미터로 사용되며, 모듈의 컨트롤러 클래스에서 메소드의 이름으로도 사용된다.
+```php [src/controllers/CommonController.php]
+// index.php?module=example&act=dispExample1Index
 
-!!모듈이름의 규칙 링크
+namespace Rhymix\Modules\Example1\Src\Controllers;
 
-##### type & class {#action-type-or-class}
+class CommonController extends \ModuleObject
+{
+    public function dispExample1Index()
+    {
+        // 실행할 코드
+    }
+}
+```
 
-#### 메뉴
+:::
 
-##### menu_index {#action-menu-index}
+#### 액션 이름의 규칙
 
-##### menu_name {#action-menu-name}
+액션의 이름에는 모듈의 이름이 포함되며, `disp`, `proc`, `get` 등의 접두사가 붙는다.
 
-#### HTTP 메소드 & 라우팅
+"disp|proc|get + 모듈이름 + 액션"의 조합으로 구성된다.  
+"모듈이름"은 모듈이 설치된 디렉토리명이 대문자로 시작되는 문자열이며, "액션"은 기능에 따라 적절하게 이름을 지을 수 있는 문자열이다.
 
-##### global_route {#action-global-route}
+| 접두사 | 설명                                                             |
+| ------ | ---------------------------------------------------------------- |
+| disp   | 보통 화면을 출력하는 역할 (view)                                 |
+| proc   | 보통 데이터를 가공(저장, 수정, 삭제)하는 역할 (controller)       |
+| get    | 보통 데이터를 가져오는 역할 (model 데이터를 반환하는 controller) |
 
-##### method {#action-method}
+::: tip -> [액션 자세히 알아보기](/reference/module-manifest-actions)
+:::
 
-##### route {#action-route}
+---
 
-##### standalone {#action-standalone}
-
-#### 보안, 검증
-
-##### check_var {#action-check-var}
-
-##### check-csrf {#action-check-csrf}
-
-##### permissions {#action-permissions}
-
-##### ruleset {#action-ruleset}
-
-#### 기타
-
-##### admin-index {#action-admin-index}
-
-관리페이지 주 메뉴
-
-##### cache-control {#action-cache-control}
-
-##### error-handlers {#action-error-handlers}
-
-오류 핸들러
-
-##### index {#action-index}
-
-##### meta-noindex {#action-meta-noindex}
-
-meta robots noindex
-
-##### session {#action-session}
-
-##### setup_index {#action-setup-index}
-
-##### simple_setup_index {#action-simple-setup-index}
-
-### 라우터 (Router) <Badge type="danger" text="초안 작성중" />
+### 라우터 (router) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="🚧 초안 작성중" />
 
 라우터는 액션의 정보에 포함할 수 있다.
 
-### 권한 (permissions) <Badge type="danger" text="초안 작성중" />
+---
+
+### 권한 (permissions) <Badge type="danger" text="🚧 초안 작성중" />
 
 ```xml
 <permissions>
@@ -191,35 +207,71 @@ meta robots noindex
 </permissions>
 ```
 
-### 오류 (errorHandlers) <Badge type="danger" text="초안 작성중" />
+---
 
-```xml
-<errorHandlers>
-    <errorHandler code="405" class="Controllers\Errors" method="dispErrorMethod" />
-</errorHandlers>
-```
-
-### 이벤트 (eventHandlers) <Badge type="danger" text="초안 작성중" />
-
-```xml
-<eventHandlers>
-    <!-- shutdown 핸들러 등록 -->
-    <eventHandler before="moduleHandler.init" class="Src\EventHandler" method="beforeModuleHandlerInit" />
-
-    <!-- 디버그바 출력 -->
-    <eventHandler after="display" class="Src\EventHandler" method="afterDisplay" />
-</eventHandlers>
-```
-
-### 권한 (grnats) <Badge type="danger" text="초안 작성중" />
+### 권한 (grnats) <Badge type="danger" text="🚧 초안 작성중" />
 
 ```xml
 <grants>
     <grant name="view" default="guest">
         <title xml:lang="ko">열람</title>
-        <title xml:lang="en">View</title>
     </grant>
 </grants>
+```
+
+---
+
+### 이벤트 핸들러 (eventHandlers) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="🚧 초안 작성중" />
+
+이벤트 핸들러는 트리거를 등록, 수정, 삭제할 수 있다.
+
+```xml
+<eventHandlers>
+    <!-- `moduleHandler.init` before 트리거를 등록한 예시 -->
+    <eventHandler
+        before="moduleHandler.init"
+        class="Src\EventHandler"
+        method="beforeModuleHandlerInit" />
+</eventHandlers>
+```
+
+이벤트를 수신할 호출 시점 _하나를_ 선택하여 속성으로 지정해야 한다.  
+`bofore`, `after` 시점은 보통 특정 기능을 처리하기 전과 후에 호출되며, `beforeAction`, `afterAction`은 모듈의 액션으로 지정된 메소드가 실행되기 전과 후에 호출된다.
+
+`class` 속성과 `method` 속성으로 이벤트가 발생할 때 실행된 클래스와 메소드를 지정하면 된다.
+
+```php
+namespace Rhymix\Modules\모듈이름\Src;
+
+// `class` 속성에 지정된 클래스
+class EventHandler extends \ModuleObject
+{
+    /**
+     * `moduleHandler.init` 이벤트가 발생할 때 `method` 속성으로 지정한 메소드
+     *
+     * @param object $triggerObject 트리거를 호출한 코드에서 전달한 객체
+     */
+    public function beforeModuleHandlerInit($triggerObject)
+    {
+        // 실행할 코드
+    }
+}
+```
+
+::: tip -> [트리거(이벤트) 자세히 알아보기](/reference/trigger)
+:::
+
+---
+
+### 오류 처리 (errorHandlers) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="🚧 초안 작성중" />
+
+```xml
+<errorHandlers>
+    <errorHandler
+        code="405"
+        class="Controllers\Errors"
+        method="dispErrorMethod" />
+</errorHandlers>
 ```
 
 <!-- ## prefixes <Badge type="tip" text="Since v2.?" /> -->

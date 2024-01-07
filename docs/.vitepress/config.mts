@@ -123,6 +123,7 @@ export default mergeConfig(customConfig, defineConfig({
           items: [
             { text: '시작하기', link: '/extend/basic' },
             { text: '설정 파일', link: '/extend/basic/manifest-info' },
+            { text: '정적분석도구 사용하기', link: '/extend/basic/static-analysis' },
           ]
         },
         {
@@ -134,8 +135,9 @@ export default mergeConfig(customConfig, defineConfig({
           text: '모듈 만들기',
           items: [
             { text: '개요', link: '/extend/module/about' },
-            { text: 'Manifest', link: '/extend/module/manifest' },
-            { text: '트리거' },
+            { text: '모듈 정보 및 설정', link: '/extend/module/manifest' },
+            { text: '액션 정의', link: '/extend/module/action' },
+            { text: '이벤트 (트리거)', link: '/extend/module/event' },
             { text: '스키마', link: '/extend/module/schema' },
             { text: '룰셋' },
           ]
@@ -163,11 +165,23 @@ export default mergeConfig(customConfig, defineConfig({
           items: [
             { text: '라이프 사이클', link: '/reference/lifecycle' },
             { text: '디버그', link: '/reference/debug' },
+            { text: '네임스페이스/autoload', link: '/reference/namespace-and-autoload' },
             { text: '템플릿' },
             { text: 'DB 쿼리' },
             { text: '라우터', link: '/reference/router' },
             {
-              text: '트리거',
+              text: 'Manifest',
+              items: [
+                {
+                  text: '모듈',
+                  items: [
+                    { text: '액션', link: '/reference/module-manifest-actions' },
+                  ]
+                },
+              ],
+            },
+            {
+              text: '이벤트 (트리거)',
               link: '/reference/trigger',
               items: [
                 { text: '개요', link: '/reference/trigger' },
@@ -176,7 +190,18 @@ export default mergeConfig(customConfig, defineConfig({
             },
             { text: '룰셋' },
             { text: '폼 필터' },
-            { text: 'changelog', link: '/reference/changelog' },
+            {
+              text: '주요 객체',
+              items: [
+                { text: '문서', link: '/reference/document' },
+              ]
+            },
+            {
+              text: '기타',
+              items: [
+                { text: 'changelog', link: '/reference/changelog' },
+              ]
+            }
           ]
         },
       ],

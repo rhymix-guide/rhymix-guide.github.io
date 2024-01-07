@@ -5,7 +5,7 @@ outline: [2, 5]
 # 템플릿 문법 (v2) <Badge type="tip" text="Since Rhymix v2.2" />
 
 ::: danger
-이 문서는 초안을 작성중인 문서이다.
+🚧 이 문서는 초안을 작성중인 문서이다.
 :::
 
 템플릿 문법(v2)는 [Laravel의 Blade](https://laravel.com/docs/10.x/blade) 문법을 차용하여 만들어졌다. Blade는 PHP 문법과 매우 유사하기 때문에 쉽게 익힐 수 있다.

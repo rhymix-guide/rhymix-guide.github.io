@@ -1,12 +1,12 @@
 # Manifest - 정보 및 설정 파일
 
 ::: danger
-이 문서는 초안을 작성중인 문서이다.
+🚧 이 문서는 초안을 작성중인 문서이다.
 :::
 
 모듈, 레이아웃, 스킨, 애드온, 위젯 등 해당 확장의 정보를 담고 있는 파일이다. 제작자 정보와 버전, 라이선스 등의 정보를 담고 있으며, 모듈의 API를 노출하거나 레이아웃이나 스킨의 설정을 정의하는 등의 역할을 한다.
 
-## 개요
+## 개요 <Badge type="danger" text="🚧 초안 작성중" />
 
 자료의 유형에 따라 전용 속성이 있으며 제작자 정보 등의 공통 속성을 가진다.
 
@@ -80,7 +80,7 @@
 
 ---
 
-### 확장 변수 (extra_vars) <Badge type="danger" text="초안을 작성중인 항목" />
+### 확장 변수 (extra_vars) <Badge type="danger" text="🚧 초안 작성중" />
 
 확장변수(`extra_vars`)는 자료의 설정 폼을 정의할 때 사용한다. 레이아웃, 위젯, 모듈 스킨 등에서 사용자 설정을 입력받아서 활용할 수 있다. 예를 들면, 레이아웃에서는 사이트 제목이나, 위젯에서는 출력할 항목의 갯수 등을 입력받아서 사용할 수 있다.
 
@@ -123,7 +123,7 @@
 
 :::
 
-### 컬러셋 (colorset) <Badge type="tip" text="스킨 전용" /> <Badge type="danger" text="초안을 작성중인 항목" />
+### 컬러셋 (colorset) <Badge type="tip" text="스킨 전용" /> <Badge type="danger" text="🚧 초안 작성중" />
 
 모듈 스킨, 위젯 스킨 전용 속성
 
@@ -138,8 +138,8 @@
 </colorset>
 ```
 
-### 메뉴 (menus) <Badge type="tip" text="레이아웃 전용" /> <Badge type="danger" text="초안을 작성중인 항목" />
+### 메뉴 (menus) <Badge type="tip" text="레이아웃 전용" /> <Badge type="danger" text="🚧 초안 작성중" />
 
 레이아웃 전용 속성
 
-## 모듈 module.xml <Badge type="danger" text="초안을 작성중인 항목" />
+## 모듈 module.xml <Badge type="danger" text="🚧 초안 작성중" />
