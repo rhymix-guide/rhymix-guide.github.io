@@ -55,7 +55,7 @@ export default mergeConfig(customConfig, defineConfig({
           // { text: '위젯' },
         ]
       },
-      { text: '레퍼런스', link: '/reference/lifecycle' },
+      { text: '레퍼런스', link: '/reference/debug' },
       { text: 'Awesome', link: 'https://github.com/rhymix-guide/awesome-rhymix' },
     ],
 
@@ -112,8 +112,7 @@ export default mergeConfig(customConfig, defineConfig({
           items: [
             { text: '애드온 만들기' },
             { text: '모듈 만들기', link: '/extend/module/about' },
-            { text: '위젯 만들기' },
-            { text: '위젯스타일 만들기' },
+            { text: '위젯 만들기', link: '/extend/widget/about' },
           ]
         },
       ],
@@ -130,6 +129,7 @@ export default mergeConfig(customConfig, defineConfig({
         {
           text: '애드온 만들기',
           items: [
+            { text: '개요', link: '/extend/addon' },
           ]
         },
         {
@@ -146,7 +146,7 @@ export default mergeConfig(customConfig, defineConfig({
         {
           text: '위젯 만들기',
           items: [
-            { text: '개요' },
+            { text: '개요', link: '/extend/widget/about' },
           ]
         },
         {
@@ -158,17 +158,29 @@ export default mergeConfig(customConfig, defineConfig({
             { text: '위젯 스타일 만들기' },
           ]
         },
+        {
+          text: '기타',
+          items: [
+            { text: 'Composer 사용하기', link: '/extend/module/composer' },
+          ]
+        },
       ],
 
       '/reference/': [
         {
           text: '레퍼런스',
           items: [
-            { text: '라이프 사이클', link: '/reference/lifecycle' },
+            // { text: '라이프 사이클', link: '/reference/lifecycle' },
             { text: '디버그', link: '/reference/debug' },
             { text: '네임스페이스/autoload', link: '/reference/namespace-and-autoload' },
             { text: '템플릿' },
-            { text: 'DB 쿼리' },
+            {
+              text: '데이터베이스', link: '/reference/database',
+              items: [
+                { text: '쿼리 빌더', link: '/reference/database/query-builder' },
+                { text: 'DB 헬퍼', link: '/reference/database/db-helper' },
+              ]
+            },
             { text: '라우터', link: '/reference/router' },
             {
               text: 'Manifest',
@@ -215,6 +227,8 @@ export default mergeConfig(customConfig, defineConfig({
       }
     },
 
+    externalLinkIcon: true,
+
     search: {
       provider: 'local'
     },
@@ -232,7 +246,7 @@ export default mergeConfig(customConfig, defineConfig({
   },
   markdown: {
     config: (md) => {
-    }
+    },
   },
   sitemap: {
     hostname: 'https://rhymix-guide.github.io/',

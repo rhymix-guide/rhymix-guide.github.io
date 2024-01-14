@@ -78,7 +78,7 @@ use VendorName\Example1\Models\ConfigModel;
 -----------------------^
 ```
 
-기본 네임스페이스와 커스텀 네임스페이스 모두 `modules/example1/models/ConfigModel.php` 파일을 가리킨다. 디렉토리는 반드시 소문자만 사용해야 하며, 파일명은 CamelCase를 사용하는 것을 권장한다. 필요하다면 디렉토리에 snake_case를 사용할 수 있다.
+기본 네임스페이스와 커스텀 네임스페이스 모두 `modules/example1/models/ConfigModel.php` 파일을 가리킨다. 디렉토리는 반드시 소문자만 사용해야 하며, 파일명은 PascalCase를 사용하는 것을 권장한다. 필요하다면 디렉토리에 snake_case를 사용할 수 있다.
 
 ::: tip -> [네임스페이스와 autoload 자세히 알아보기](/reference/namespace-and-autoload)
 :::

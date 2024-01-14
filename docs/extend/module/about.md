@@ -26,7 +26,7 @@ modules/example1      # 이 예제 모듈의 디렉토리
 └── LICENSE           # 라이선스 파일 (GNU GPL v2 or later)
 ```
 
-::: tip 모듈 템플릿
+::: tip 🎉 모듈 템플릿
 모듈의 권장 구조를 쉽게 구성할 수 있도록 GitHub 템플릿 저장소를 이용할 수 있다.  
 -> [모듈 템플릿 사용하기](https://github.com/rhymix-guide/rhymix-module)
 :::
@@ -38,40 +38,43 @@ modules/example1      # 이 예제 모듈의 디렉토리
 ::: code-group
 
 ```shell [라이믹스 권장 구조]
-modules/example       # 모듈의 폴더
-├── conf              # 모듈 정보 및 설정 (Manifest)
-│   ├── info.xml        # 모듈 정보
-│   └── module.xml      # 모듈 설정
+modules/example
+├── conf
+│   ├── info.xml
+│   └── module.xml
 ├── controllers       # 컨트롤러 // [!code highlight]
-├── lang              # 다국어
-│   └── ko.php          # 한국어
+├── lang
+│   └── ko.php
 ├── models            # 모델 // [!code highlight]
-├── queries           # XML 쿼리
-├── schemas           # DB 테이블 스키마
-├── views             # view 템플릿
+├── queries
+├── schemas
+├── views
 │   └── img
-└── LICENSE           # 라이선스 파일
+└── LICENSE
 ```
 
 ```shell [비교하기]
-modules/example       # 모듈의 폴더
-├── conf              # 모듈 정보 및 설정 (Manifest)
-│   ├── info.xml        # 모듈 정보
-│   └── module.xml      # 모듈 설정
+modules/example
+├── conf
+│   ├── info.xml
+│   └── module.xml
 ├── controllers       # src 밑으로 이동 // [!code --]
-├── lang              # 다국어
-│   └── ko.php          # 한국어
+├── lang
+│   └── ko.php
 ├── models            # src 밑으로 이동 // [!code --]
 ├── public            # Assets // [!code ++]
 │   └── img           # [!code ++]
-├── queries           # XML 쿼리
-├── schemas           # DB 테이블 스키마
+├── queries
+├── schemas
 ├── src               # 모듈을 구성하는 PHP 파일 // [!code ++]
 │   ├── controllers     # 컨트롤러 // [!code ++]
+│   ├── tratis          # (예시) trait
 │   └── models          # 모델 // [!code ++]
-├── views             # view 템플릿
+├── vendor            # (composer 사용 시)
+├── views
 │   └── img           # public 밑으로 이동 // [!code --]
-└── LICENSE           # 라이선스 파일
+├── composer.json     # (composer 사용 시)
+└── LICENSE
 ```
 
 `controllers`, `models` 디렉토리의 역활 외에 추가로 필요해지는 구조가 다른 디렉토리와 뒤섞이는 문제 방지를 위해 `src` 디렉토리 아래에 두었다.

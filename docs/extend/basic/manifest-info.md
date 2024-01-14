@@ -95,16 +95,23 @@
 </extra_vars>
 ```
 
-| type               | 설명                      | 적용 자료            |
-| ------------------ | ------------------------- | -------------------- |
-| text               | `<input type="text">`     | layout, widget, skin |
-| checkbox           | `<input type="checkbox">` | layout, widget, skin |
-| colorpicker        | 색상 선택기               | layout, skin         |
-| image              | 이미지 선택               | layout, skin         |
-| radio              | `<input type="radio">`    | layout, widget       |
-| select             | `<select>`                | layout, widget, skin |
-| select-multi-order |                           | widget               |
-| textarea           | `<textarea>`              | layout, widget, skin |
+| type               | layout | skin | addon | widget | widget style | editor component |
+| ------------------ | :----: | :--: | :---: | :----: | :----------: | :--------------: |
+| checkbox           |   O    |  O   |  ❌   |   O    |      O       |        ❌        |
+| color              |   ❌   |  ❌  |  ❌   |   O    |      O       |        ❌        |
+| colorpicker        |   O    |  O   |  ❌   |   ❌   |      ❌      |        ❌        |
+| filebox            |   ❌   |  ❌  |  ❌   |   O    |      O       |        ❌        |
+| image              |   O    |  O   |  ❌   |   ❌   |      ❌      |        ❌        |
+| member_group       |   ❌   |  ❌  |  ❌   |   O    |      ❌      |        ❌        |
+| menu               |   ❌   |  ❌  |  ❌   |   O    |      ❌      |        ❌        |
+| mid                |   ❌   |  ❌  |  ❌   |   O    |      ❌      |        ❌        |
+| mid_list           |   ❌   |  ❌  |  ❌   |   O    |      ❌      |        ❌        |
+| module_srl_list    |   ❌   |  ❌  |  ❌   |   O    |      ❌      |        ❌        |
+| radio              |   O    |  O   |  ❌   |   O    |      O       |        ❌        |
+| select             |   O    |  O   |   O   |   O    |      O       |        O         |
+| select-multi-order |   ❌   |  ❌  |  ❌   |   O    |      ❌      |        ❌        |
+| text               |   O    |  O   |   O   |   O    |      O       |        O         |
+| textarea           |   O    |  O   |   O   |   O    |      O       |        O         |
 
 ::: details 회원정보 전용 속성
 

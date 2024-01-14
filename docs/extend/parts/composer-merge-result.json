@@ -1,0 +1,29 @@
+{
+  "config": {
+    "optimize-autoloader": true,
+    "platform-check": false,
+    "prepend-autoloader": false,
+    "allow-plugins": {
+      "wikimedia/composer-merge-plugin": true
+    }
+  },
+  "require": {
+    "php": ">=7.2.5"
+  },
+  "require-dev": {
+    "wikimedia/composer-merge-plugin": "^2.1"
+  },
+  "extra": {
+    "merge-plugin": {
+      "include": ["../../common/composer.json"],
+      "recurse": true,
+      "replace": false,
+      "ignore-duplicates": true,
+      "merge-dev": false,
+      "merge-extra": false,
+      "merge-extra-deep": false,
+      "merge-replace": true,
+      "merge-scripts": false
+    }
+  }
+}

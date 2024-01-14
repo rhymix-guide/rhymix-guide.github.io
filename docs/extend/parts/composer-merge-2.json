@@ -1,0 +1,15 @@
+{
+  "extra": { // [!code ++]
+    "merge-plugin": { // [!code ++]
+      "include": ["../../common/composer-replace.json"], // [!code ++]
+      "recurse": true, // [!code ++]
+      "replace": false, // [!code ++]
+      "ignore-duplicates": false, // [!code ++]
+      "merge-dev": false, // [!code ++]
+      "merge-extra": false, // [!code ++]
+      "merge-extra-deep": false, // [!code ++]
+      "merge-replace": true, // [!code ++]
+      "merge-scripts": false // [!code ++]
+    } // [!code ++]
+  } // [!code ++]
+}

@@ -1,0 +1,10 @@
+{
+  "config": {
+    "allow-plugins": { // [!code ++]
+      "wikimedia/composer-merge-plugin": true // [!code ++]
+    } // [!code ++]
+  },
+  "require-dev": { // [!code ++]
+    "wikimedia/composer-merge-plugin": "^2.1" // [!code ++]
+  } // [!code ++]
+}
