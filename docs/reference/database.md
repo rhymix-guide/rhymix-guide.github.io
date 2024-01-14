@@ -134,5 +134,5 @@ debugPrint($documentList);
 ::: tip DB 헬퍼 사용하기
 XML 쿼리 빌더에 비해 비교적 쉽고 PDO API를 사용할 수 있다.
 
--> [DB 헬퍼 사용하기](/reference/database/pdo)
+-> [DB 헬퍼 사용하기](/reference/database/db-helper)
 :::
