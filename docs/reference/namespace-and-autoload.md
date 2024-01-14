@@ -20,18 +20,22 @@ use Rhymix\Modules\Example1\Models\ConfigModel;
 단, 라이믹스는 하위 호환성 때문에 PSR-4 또는 PSR-0 표준안을 따르지 않으며, 다음과 같은 규칙을 가진다.
 
 - 디렉토리는 **반드시** 소문자로만 사용
-- 파일명은 PascalCase 사용 권장
+- 파일명은 **PascalCase** 사용
 
 ```php
 use Rhymix\Modules\Example1\Models\ConfigModel;
-// ✅      modules/example1/models/ConfigModel.php // [!code highlight]
-// ❌      modules/Example1/Models/ConfigModel.php // [!code error]
+// ✅     modules/example1/models/ConfigModel.php
+// ❌     modules/Example1/Models/ConfigModel.php // [!code error]
 
-use Rhymix\Modules\MyAwesomeModule\Models\ConfigModel;
-// ✅      modules/myawesomemodule/models/ConfigModel.php // [!code highlight]
-// ❌      modules/myawesomemodule/models/configmodel.php // [!code error]
-// ❌      modules/MyAwesomeModule/Models/ConfigModel.php // [!code error]
+use Rhymix\Modules\MyAwesomeModule\TopicCollectors\BasicCollector;
+// ✅     modules/myawesomemodule/topiccollectors/BasicCollector.php
+// ❌     modules/myawesomemodule/topiccollectors/basiccollector.php // [!code error]
+// ❌     modules/MyAwesomeModule/TopicCollectors/BasicCollector.php // [!code error]
 ```
+
+::: info
+라이믹스는 네임스페이스에서 디렉토리는 모두 소문자로 강제 변환되며, 클래스의 이름만 대소문자를 그대로 유지하여 파일을 찾는다.
+:::
 
 ## 커스텀 네임스페이스
 
