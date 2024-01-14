@@ -181,6 +181,15 @@ export default mergeConfig(customConfig, defineConfig({
                 { text: 'DB 헬퍼', link: '/reference/database/db-helper' },
               ]
             },
+            { text: 'Context' },
+            {
+              text: '주요 객체', link: '/reference/objects',
+              items: [
+                // { text: 'BaseObject', link: '/reference/objects/base-object' },
+                { text: '문서 DocumentItem', link: '/reference/objects/document-item' },
+                { text: '댓글 CommentItem', link: '/reference/objects/comment-item' },
+              ]
+            },
             { text: '라우터', link: '/reference/router' },
             {
               text: 'Manifest',
@@ -198,25 +207,19 @@ export default mergeConfig(customConfig, defineConfig({
               link: '/reference/trigger',
               items: [
                 { text: '개요', link: '/reference/trigger' },
-                { text: '트리거 목록', link: '/reference/trigger-list' },
+                { text: '이벤트 목록', link: '/reference/trigger-list' },
               ],
             },
             { text: '룰셋' },
             { text: '폼 필터' },
-            {
-              text: '주요 객체',
-              items: [
-                { text: '문서', link: '/reference/document' },
-              ]
-            },
-            {
-              text: '기타',
-              items: [
-                { text: 'changelog', link: '/reference/changelog' },
-              ]
-            }
           ]
         },
+        {
+          text: '기타',
+          items: [
+            { text: 'changelog', link: '/reference/changelog' },
+          ]
+        }
       ],
     },
 
