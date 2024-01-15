@@ -135,7 +135,7 @@ export default mergeConfig(customConfig, defineConfig({
         {
           text: '모듈 만들기',
           items: [
-            { text: '개요', link: '/extend/module/about' },
+            { text: '시작하기', link: '/extend/module/about' },
             { text: '모듈 정보 및 설정', link: '/extend/module/manifest' },
             { text: '액션 정의', link: '/extend/module/action' },
             { text: '이벤트 (트리거)', link: '/extend/module/event' },
@@ -171,36 +171,20 @@ export default mergeConfig(customConfig, defineConfig({
           text: '레퍼런스',
           items: [
             // { text: '라이프 사이클', link: '/reference/lifecycle' },
-            { text: '디버그', link: '/reference/debug' },
             { text: '네임스페이스/autoload', link: '/reference/namespace-and-autoload' },
-            { text: '템플릿' },
+            {
+              text: '템플릿',
+              link: '/reference/template',
+              items: [
+                { text: 'Modifier', link: '/reference/template/modifier' },
+              ]
+            },
             {
               text: '데이터베이스', link: '/reference/database',
               items: [
                 { text: '쿼리 빌더', link: '/reference/database/query-builder' },
                 { text: 'DB 헬퍼', link: '/reference/database/db-helper' },
               ]
-            },
-            { text: 'Context' },
-            {
-              text: '주요 객체', link: '/reference/objects',
-              items: [
-                // { text: 'BaseObject', link: '/reference/objects/base-object' },
-                { text: '문서 DocumentItem', link: '/reference/objects/document-item' },
-                { text: '댓글 CommentItem', link: '/reference/objects/comment-item' },
-              ]
-            },
-            { text: '라우터', link: '/reference/router' },
-            {
-              text: 'Manifest',
-              items: [
-                {
-                  text: '모듈',
-                  items: [
-                    { text: '액션', link: '/reference/module-manifest-actions' },
-                  ]
-                },
-              ],
             },
             {
               text: '이벤트 (트리거)',
@@ -210,13 +194,114 @@ export default mergeConfig(customConfig, defineConfig({
                 { text: '이벤트 목록', link: '/reference/trigger-list' },
               ],
             },
-            { text: '룰셋' },
-            { text: '폼 필터' },
+            { text: '라우터', link: '/reference/router' },
+          ]
+        },
+        {
+          text: '분류',
+          items: [
+            { text: 'Context' },
+            {
+              text: '주요 객체', link: '/reference/objects',
+              items: [
+                // { text: 'BaseObject', link: '/reference/objects/base-object' },
+                { text: '문서 DocumentItem', link: '/reference/objects/document-item' },
+                { text: '댓글 CommentItem', link: '/reference/objects/comment-item' },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'Manifest',
+          items: [
+            {
+              text: '모듈',
+              items: [
+                { text: '액션', link: '/reference/module-manifest-actions' },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'Framework',
+          items: [
+            { text: 'Cache' },
+            // { text: 'Calendar' },
+            { text: 'Config' },
+            { text: 'Cookie' },
+            { text: 'DateTime' },
+            // { text: 'DB' },
+            // { text: 'Debug' },
+            { text: 'Exception' },
+            { text: 'Formatter' },
+            // { text: 'HTTP' },
+            // { text: 'i18n' },
+            // { text: 'Image' },
+            // { text: 'Korea' },
+            // { text: 'Lang' },
+            // { text: 'Mail' },
+            // { text: 'MIME' },
+            // { text: 'Pagination' },
+            { text: 'Password' },
+            // { text: 'Push' },
+            // { text: 'Request' },
+            // { text: 'Router' },
+            { text: 'Security' },
+            { text: 'Session' },
+            // { text: 'SMS' },
+            { text: 'Storage' },
+            // { text: 'Template' },
+            // { text: 'Timer' },
+            // { text: 'UA' },
+            { text: 'URL' },
+          ]
+        },
+        {
+          text: 'Modules',
+          items: [
+            // { text: 'addon' },
+            // { text: 'admin' },
+            // { text: 'adminlogging' },
+            // { text: 'advanced_mailer' },
+            // { text: 'autoinstall' },
+            { text: 'board' },
+            { text: 'comment' },
+            { text: 'communication' },
+            // { text: 'counter' },
+            { text: 'document' },
+            // { text: 'editor' },
+            { text: 'file' },
+            // { text: 'importer' },
+            // { text: 'install' },
+            // { text: 'integration_search' },
+            // { text: 'krzip' },
+            { text: 'layout' },
+            { text: 'member' },
+            { text: 'menu' },
+            // { text: 'message' },
+            { text: 'module' },
+            // { text: 'ncenterlite' },
+            { text: 'page' },
+            { text: 'point' },
+            // { text: 'poll' },
+            // { text: 'rss' },
+            // { text: 'session' },
+            // { text: 'spamfilter' },
+            // { text: 'tag' },
+            // { text: 'trash' },
+            // { text: 'widget' },
+          ]
+        },
+        {
+          text: '분류',
+          items: [
+
           ]
         },
         {
           text: '기타',
           items: [
+            { text: '디버그', link: '/reference/debug' },
             { text: 'changelog', link: '/reference/changelog' },
           ]
         }

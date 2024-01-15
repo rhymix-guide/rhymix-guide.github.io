@@ -37,6 +37,8 @@
 
 ### name
 
+컬럼 이름
+
 ```xml
 <column name="id" />
 ```
@@ -45,6 +47,14 @@
 
 ```xml
 <column type="bigint" />
+```
+
+### auto_increment
+
+자동 증가 값
+
+```xml
+<column name="no" type="bigint" auto_increment="auto_increment" />
 ```
 
 ### notnull
@@ -63,14 +73,6 @@
 
 ```xml
 <column name="uuid" unique="unique_uuid" />
-```
-
-### auto_increment
-
-자동 증가 값
-
-```xml
-<column name="no" type="bigint" auto_increment="auto_increment" />
 ```
 
 ### size
