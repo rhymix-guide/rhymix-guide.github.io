@@ -140,3 +140,12 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+code {
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+pre code {
+  -webkit-user-select: initial;
+  user-select: initial;
+}
