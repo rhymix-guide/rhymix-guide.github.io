@@ -1,19 +1,13 @@
 {
-  "name": "rhymix-guide",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "deepmerge": "^4.3.1",
-    "vitepress": "^1.0.0-rc.32",
+    "vitepress": "^1.0.1",
     "vitepress-plugin-google-analytics": "^1.0.2"
   }
 }
