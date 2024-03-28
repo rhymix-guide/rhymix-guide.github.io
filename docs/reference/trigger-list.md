@@ -56,15 +56,15 @@ addTriggerFunction($name, $position, function ($data) {
 
 ## 커뮤니케이션 (communication) <Badge type="danger" text="🚧 초안 작성중" />
 
-### deleteMessage <Badge type="info" text="before & after" /> <Badge type="tip" text="Since v2.1.12" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-deleteMessage}
+### deleteMessage <Badge type="info" text="before | after" /> <Badge type="tip" text="Since v2.1.12" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-deleteMessage}
 
-### deleteMessages <Badge type="info" text="before & after" /> <Badge type="tip" text="Since v2.1.12" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-deleteMessages}
+### deleteMessages <Badge type="info" text="before | after" /> <Badge type="tip" text="Since v2.1.12" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-deleteMessages}
 
-### addFriend <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-addFriend}
+### addFriend <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-addFriend}
 
-### deleteFriend <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-deleteFriend}
+### deleteFriend <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-deleteFriend}
 
-### sendMessage <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-sendMessage}
+### sendMessage <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#communication-sendMessage}
 
 ---
 

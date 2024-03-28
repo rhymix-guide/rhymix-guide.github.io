@@ -24,7 +24,69 @@ function (&$output = '') {
 
 ### layout <Badge type="danger" text="🚧 초안 작성중" /> {#core-layout}
 
-### moduleHandler.init <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleHandler.init}
+### moduleHandler.init <Badge type="info" text="before | after" /> {#core-moduleHandler.init}
+
+모듈을 동작시키기 위해 요청 정보를 처리하여 실행할 모듈과 액션을 찾는 초기화 과정에서 호출된다.
+
+::: tip `ModuleHandler` 인스턴스는 다른 방법으로 참조하기 어려우며, 이 이벤트를 활용해 참조할 수 있다.
+:::
+
+- before : `ModuleHandler` 객체가 전달되어 수집된 정보를 받을 수 있다
+- after : 수집한 정보로 실행할 모듈의 객체를 받을 수 있다
+
+#### before
+
+::: code-group
+
+```php [src/EventHandler.php]
+/**
+ * @see \ModuleHandler::__construct()
+ * @param \ModuleHandler $moduleHandler
+ */
+class EventHandler
+{
+    protected static \ModuleHandler $moduleHandler;
+
+    /*
+     * ModuleHandler 인스턴스는 다른 방법으로 참조할 수 없기 때문에
+     * 이 이벤트를 사용해 미리 참조를 보관해두고 활용하는 예시이다.
+     */
+
+    /**
+     * ModuleHandler 객체를 받아 보관해둔다
+     *
+     * @param \ModuleHandler $moduleHandler
+     */
+    public static function beforeModuleHandlerInit(&$moduleHandler)
+    {
+        self::$moduleHandler = $moduleHandler;
+    }
+
+    public static function beforeDisplay()
+    {
+        // 최종 실행된 모듈의 정보과 액션을 정확히 확인할 수 있다
+        debugPrint(self::$moduleHandler->module);
+        debugPrint(self::$moduleHandler->act);
+    }
+}
+```
+
+```xml [module.xml]
+<module>
+    <eventHandlers>
+        <eventHandler before="moduleHandler.init"
+            class="Src\EventHandler"
+            method="beforeModuleHandlerInit" />
+        <eventHandler before="display"
+            class="Src\EventHandler"
+            method="beforeDisplay" />
+    </eventHandlers>
+</module>
+```
+
+:::
+
+#### after <Badge type="danger" text="🚧 초안 작성중" />
 
 ### moduleHandler.proc <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleHandler.proc}
 
@@ -63,8 +125,8 @@ function (&$dashboard) {
 }
 ```
 
-### module.deleteModule <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-deleteModule}
+### module.deleteModule <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-deleteModule}
 
-### module.dispAdditionSetup <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-dispAdditionSetup}
+### module.dispAdditionSetup <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-dispAdditionSetup}
 
 ### module.procModuleAdminCopyModule <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-procModuleAdminCopyModule}

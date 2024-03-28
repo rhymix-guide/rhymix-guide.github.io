@@ -213,7 +213,7 @@
 
 #### manage <Badge type="danger" text="🚧 초안 작성중" /> {#document-manage}
 
-#### updateVotedCount - 추천/비추천 <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCount}
+#### updateVotedCount - 추천/비추천 <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCount}
 
 글을 추천하거나 비추천할 때 발생하는 이벤트이다.
 추천/비추천을 받은 회원 번호와 글 번호를 받을 수 있다.
@@ -255,7 +255,7 @@ function($data) {
 }
 ```
 
-##### updateVotedCountCancel - 추천/비추천 취소 <Badge type="info" text="before & after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCountCancel}
+##### updateVotedCountCancel - 추천/비추천 취소 <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCountCancel}
 
 ::: info 같은 형식의 데이터
 이 이벤트와 앞의 `document.updateVotedCount` 이벤트는 데이터 형식이 같다.  
