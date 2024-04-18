@@ -7,7 +7,10 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "vitepress": "^1.0.1",
+    "vitepress": "^1.1.1",
     "vitepress-plugin-google-analytics": "^1.0.2"
+  },
+  "dependencies": {
+    "vitepress-plugin-comment-with-giscus": "^1.1.12"
   }
 }
