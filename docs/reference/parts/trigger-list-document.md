@@ -33,9 +33,8 @@
 
 #### insertDocument <Badge type="danger" text="🚧 초안 작성중" /> {#document-insertDocument}
 
-::: warning
-이 이벤트는 글과 관련된 데이터의 변경사항을 처리하는 트랜잭션 안에서 동작하므로 의도하지 않은 롤백이 발생하지 않도록 주의해야 한다.
-:::
+> [!warning]
+> 이 이벤트는 글과 관련된 데이터의 변경사항을 처리하는 트랜잭션 안에서 동작하므로 의도하지 않은 롤백이 발생하지 않도록 주의해야 한다.
 
 ##### after
 
@@ -257,14 +256,12 @@ function($data) {
 
 ##### updateVotedCountCancel - 추천/비추천 취소 <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCountCancel}
 
-::: info 같은 형식의 데이터
-이 이벤트와 앞의 `document.updateVotedCount` 이벤트는 데이터 형식이 같다.  
-위 예제와 같은 이벤트 리스너에서 `cancel` 속성으로 구분하여 함께 처리할 수 있다.
-
-```php
-/**
- * @see \DocumentController::updateVotedCountCancel()
- */
-```
-
-:::
+> [!info] 같은 형식의 데이터
+> 이 이벤트와 앞의 `document.updateVotedCount` 이벤트는 데이터 형식이 같다.  
+> 위 예제와 같은 이벤트 리스너에서 `cancel` 속성으로 구분하여 함께 처리할 수 있다.
+> 
+> ```php
+> /**
+>  * @see \DocumentController::updateVotedCountCancel()
+>  */
+> ```
