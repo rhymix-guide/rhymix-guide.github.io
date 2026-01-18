@@ -96,5 +96,5 @@ class EventHandler
 }
 ```
 
-::: info -> [`admin.dashboard` 이벤트 자세히 보기](/reference/trigger-list#core-admin.dashboard)
+::: info -> [`admin.dashboard` 이벤트 자세히 보기](/reference/event-list#core-admin.dashboard)
 :::

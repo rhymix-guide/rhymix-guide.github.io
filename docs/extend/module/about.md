@@ -71,7 +71,8 @@ modules/example
 ├── schemas
 ├── src               # 모듈을 구성하는 PHP 파일 // [!code ++]
 │   ├── controllers     # 컨트롤러 // [!code ++]
-│   ├── tratis          # (예시) trait
+│   ├── events          # (예시)
+│   ├── exceptions      # (예시)
 │   └── models          # 모델 // [!code ++]
 ├── vendor            # (composer 사용 시)
 ├── views

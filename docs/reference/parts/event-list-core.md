@@ -1,14 +1,14 @@
-| 이벤트                                                                | 호출시점      | 설명                                |
-| --------------------------------------------------------------------- | ------------- | ----------------------------------- |
-| [moduleHandler.init](#core-moduleHandler.init)                        | before, after | 가장 먼저 발생하는 이벤트           |
-| [moduleObject.proc](#core-moduleObject.proc)                          | before, after |                                     |
-| [moduleHandler.proc](#core-moduleHandler.proc)                        | after         |                                     |
-| [layout](#core-layout)                                                | before        |                                     |
-| [display](#core-display)                                              | before, after | 응답할 최종 컨텐츠를 변경할 수 있다 |
-| [admin.dashboard](#core-admin.dashboard)                              | before        |                                     |
-| [module.deleteModule](#module-deleteModule)                           | before, after |                                     |
-| [module.dispAdditionSetup](#module-dispAdditionSetup)                 | before, after |                                     |
-| [module.procModuleAdminCopyModule](#module-procModuleAdminCopyModule) | after         |                                     |
+| 이벤트                                                                | 타입    | 호출시점      | 설명                                |
+| --------------------------------------------------------------------- | ------- | ------------- | ----------------------------------- |
+| [moduleHandler.init](#core-moduleHandler.init)                        | Trigger | before, after | 가장 먼저 발생하는 이벤트           |
+| [moduleObject.proc](#core-moduleObject.proc)                          | Trigger | before, after |                                     |
+| [moduleHandler.proc](#core-moduleHandler.proc)                        | Trigger | after         |                                     |
+| [layout](#core-layout)                                                | Trigger | before        |                                     |
+| [display](#core-display)                                              | Trigger | before, after | 응답할 최종 컨텐츠를 변경할 수 있다 |
+| [admin.dashboard](#core-admin.dashboard)                              | Trigger | before        |                                     |
+| [module.deleteModule](#module-deleteModule)                           | Trigger | before, after |                                     |
+| [module.dispAdditionSetup](#module-dispAdditionSetup)                 | Trigger | before, after |                                     |
+| [module.procModuleAdminCopyModule](#module-procModuleAdminCopyModule) | Trigger | after         |                                     |
 
 이 섹션의 이벤트 중 일부는 라이믹스의 주요 라이프사이클의 일부이다. `moduleHandler.init` 이벤트가 가장 먼저 발생하며, 다음과 같은 순서로 발생한다.
 
@@ -23,7 +23,7 @@
 
 ### 라이프사이클 {#core-lifecycle}
 
-#### moduleHandler.init - 라이믹스 초기 동작 <Badge type="info" text="before" /> <Badge type="info" text="after" /> {#core-moduleHandler.init}
+#### moduleHandler.init - 라이믹스 초기 동작 <Badge type="info" text="Trigger" /> <Badge type="info" text="before, after" /> {#core-moduleHandler.init}
 
 모듈을 동작시키기 위해 요청 정보를 처리하여 실행할 모듈과 액션을 찾는 초기화 과정에서 호출된다.
 
@@ -83,21 +83,21 @@ class EventHandler
 
 ##### after <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleHandler.init-after}
 
-#### moduleObject.proc <Badge type="info" text="before" /> <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleObject.proc}
+#### moduleObject.proc <Badge type="info" text="Trigger" /> <Badge type="info" text="before, after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleObject.proc}
 
 ###### before <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleObject.proc-before}
 
 ###### after <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleObject.proc-after}
 
-#### moduleHandler.proc <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleHandler.proc}
+#### moduleHandler.proc <Badge type="info" text="Trigger" /> <Badge type="info" text="after" /><Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleHandler.proc}
 
 ##### after <Badge type="danger" text="🚧 초안 작성중" /> {#core-moduleHandler.proc-after}
 
-#### layout <Badge type="info" text="before" /> <Badge type="danger" text="🚧 초안 작성중" /> {#core-layout}
+#### layout <Badge type="info" text="Trigger" /> <Badge type="info" text="before" /> <Badge type="danger" text="🚧 초안 작성중" /> {#core-layout}
 
 ##### before <Badge type="danger" text="🚧 초안 작성중" /> {#core-layout-before}
 
-#### display - 응답 컨텐츠 <Badge type="info" text="before" /> <Badge type="info" text="after" /> {#core-display}
+#### display - 응답 컨텐츠 <Badge type="info" text="Trigger" /> <Badge type="info" text="before, after" /> {#core-display}
 
 응답할 최종 컨텐츠를 변경할 수 있다.
 
@@ -128,7 +128,7 @@ function (string &$content)
 
 ### 기타 <Badge type="danger" text="🚧 초안 작성중" /> {#core-etc}
 
-#### admin.dashboard - 관리페이지 대시보드 <Badge type="info" text="before" /> {#core-admin.dashboard}
+#### admin.dashboard - 관리페이지 대시보드 <Badge type="info" text="Trigger" /> <Badge type="info" text="before" /> {#core-admin.dashboard}
 
 관리페이지 대시보드에 항목을 추가할 수 있다.  
 왼쪽, 오른쪽 나뉘어져 있고 출력되는 항목은 각 좌, 우 배열의 순서대로 출력된다.
@@ -161,10 +161,10 @@ function (&$dashboard) {
 }
 ```
 
-#### module.deleteModule - 모듈 삭제 <Badge type="info" text="before" /> <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-deleteModule}
+#### module.deleteModule - 모듈 삭제 <Badge type="info" text="Trigger" /> <Badge type="info" text="before, after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-deleteModule}
 
-#### module.dispAdditionSetup - 모듈의 추가 설정 탭 <Badge type="info" text="before" /> <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-dispAdditionSetup}
+#### module.dispAdditionSetup - 모듈의 추가 설정 탭 <Badge type="info" text="Trigger" /> <Badge type="info" text="before, after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-dispAdditionSetup}
 
 게시판 등의 모듈 설정에서 '추가 설정' 탭에 설정 항목을 추가할 수 있다.
 
-#### module.procModuleAdminCopyModule <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-procModuleAdminCopyModule}
+#### module.procModuleAdminCopyModule <Badge type="info" text="Trigger" /> <Badge type="info" text="after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#module-procModuleAdminCopyModule}

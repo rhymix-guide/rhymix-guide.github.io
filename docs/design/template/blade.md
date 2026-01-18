@@ -2,7 +2,7 @@
 outline: [2, 5]
 ---
 
-# 템플릿 문법 (v2) <Badge type="tip" text="Since Rhymix v2.2" />
+# 템플릿 문법 (v2) <Badge type="tip" text="v2.2+" />
 
 ::: danger
 🚧 이 문서는 초안을 작성중인 문서이다.

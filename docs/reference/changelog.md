@@ -245,9 +245,9 @@
 
 | 트리거                                                                                             | 추가된 버전 |
 | -------------------------------------------------------------------------------------------------- | ----------- |
-| [`comment.getThumbnail`](/reference/trigger-list#comment-getThumbnail) (before)                    | v2.0.0      |
-| [`document.getThumbnail`](/reference/trigger-list#document-getThumbnail) (before)                  | v2.0.0      |
-| [`member.deleteScrapDocument`](/reference/trigger-list#member-deleteScrapDocument) (before, after) | v2.0.24     |
+| [`comment.getThumbnail`](/reference/event-list#comment-getThumbnail) (before)                    | v2.0.0      |
+| [`document.getThumbnail`](/reference/event-list#document-getThumbnail) (before)                  | v2.0.0      |
+| [`member.deleteScrapDocument`](/reference/event-list#member-deleteScrapDocument) (before, after) | v2.0.24     |
 
 ### v2.0.24 — 2022-12-21 {#v2-0-24}
 
@@ -493,8 +493,8 @@ PHP 7.0-7.1에서 정상 작동하던 모듈, 애드온, 위젯 등이 PHP 7.2 �
 - 확장변수 타입 추가. 국제전화번호, 국가, 언어, 시간대(Timezone) [#1475](https://github.com/rhymix/rhymix/pull/1475)
   - 회원정보 설정에서만 사용할 수 있다
 - 썸네일 생성 시 트리거 추가
-  - `document.getThumbnail`(before) -> [바로가기](/reference/trigger-list.html#document-getThumbnail)
-  - `comment.getThumbnail`(before) -> [바로가기](/reference/trigger-list.html#comment-getThumbnail)
+  - `document.getThumbnail`(before) -> [바로가기](/reference/event-list.html#document-getThumbnail)
+  - `comment.getThumbnail`(before) -> [바로가기](/reference/event-list.html#comment-getThumbnail)
 - 특정 문서와 회원에 관련된 캐시를 제거하는 메소드 추가
   - `DocumentController::clearDocumentCache()`
   - `MemberController::clearMemberCache()`

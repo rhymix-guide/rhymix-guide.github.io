@@ -188,10 +188,9 @@ export default mergeConfig(customConfig, defineConfig({
             },
             {
               text: '이벤트 (트리거)',
-              link: '/reference/trigger',
+              link: '/reference/event',
               items: [
-                { text: '개요', link: '/reference/trigger' },
-                { text: '이벤트 목록', link: '/reference/trigger-list' },
+                { text: '이벤트 목록', link: '/reference/event-list' },
               ],
             },
             { text: '라우터', link: '/reference/router' },

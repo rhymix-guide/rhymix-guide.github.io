@@ -1,37 +1,37 @@
-| 트리거                                                       | 호출시점           | 설명 |
-| ------------------------------------------------------------ | ------------------ | ---- |
-| [copyDocumentModule.each](#document-copyDocumentModule.each) | before, after      |      |
-| [copyDocumentModule](#document-copyDocumentModule)           | before, add, after |      |
-| [declaredDocument](#document-declaredDocument)               | before, after      |      |
-| [declaredDocumentCancel](#document-declaredDocumentCancel)   | before, after      |      |
-| [deleteDocument](#document-deleteDocument)                   | before, after      |      |
-| [getComments](#document-getComments)                         | after              |      |
-| [getDocumentList](#document-getDocumentList)                 | before, after      |      |
-| [getDocumentMenu](#document-getDocumentMenu)                 | before, after      |      |
-| [getNoticeList](#document-getNoticeList)                     | before, after      |      |
-| [getThumbnail](#document-getThumbnail)                       | before             |      |
-| [insertDocument](#document-insertDocument)                   | before, after      |      |
-| [manage](#document-manage)                                   | before, after      |      |
-| [moveDocumentModule](#document-moveDocumentModule)           | before, after      |      |
-| [moveDocumentToTrash](#document-moveDocumentToTrash)         | before, after      |      |
-| [publishDocument](#document-publishDocument)                 | before, after      |      |
-| [restoreTrash](#document-restoreTrash)                       | after              |      |
-| [updateDocument](#document-updateDocument)                   | before, after      |      |
-| [updateReadedCount](#document-updateReadedCount)             | before, after      |      |
-| [updateVotedCount](#document-updateVotedCount)               | before, after      |      |
-| [updateVotedCountCancel](#document-updateVotedCountCancel)   | before, after      |      |
+| 트리거                                                       | 타입    | 호출시점           | 설명 |
+| ------------------------------------------------------------ | ------- | ------------------ | ---- |
+| [copyDocumentModule.each](#document-copyDocumentModule.each) | Trigger | before, after      |      |
+| [copyDocumentModule](#document-copyDocumentModule)           | Trigger | before, add, after |      |
+| [declaredDocument](#document-declaredDocument)               | Trigger | before, after      |      |
+| [declaredDocumentCancel](#document-declaredDocumentCancel)   | Trigger | before, after      |      |
+| [deleteDocument](#document-deleteDocument)                   | Trigger | before, after      |      |
+| [getComments](#document-getComments)                         | Trigger | after              |      |
+| [getDocumentList](#document-getDocumentList)                 | Trigger | before, after      |      |
+| [getDocumentMenu](#document-getDocumentMenu)                 | Trigger | before, after      |      |
+| [getNoticeList](#document-getNoticeList)                     | Trigger | before, after      |      |
+| [getThumbnail](#document-getThumbnail)                       | Trigger | before             |      |
+| [insertDocument](#document-insertDocument)                   | Trigger | before, after      |      |
+| [manage](#document-manage)                                   | Trigger | before, after      |      |
+| [moveDocumentModule](#document-moveDocumentModule)           | Trigger | before, after      |      |
+| [moveDocumentToTrash](#document-moveDocumentToTrash)         | Trigger | before, after      |      |
+| [publishDocument](#document-publishDocument)                 | Trigger | before, after      |      |
+| [restoreTrash](#document-restoreTrash)                       | Trigger | after              |      |
+| [updateDocument](#document-updateDocument)                   | Trigger | before, after      |      |
+| [updateReadedCount](#document-updateReadedCount)             | Trigger | before, after      |      |
+| [updateVotedCount](#document-updateVotedCount)               | Trigger | before, after      |      |
+| [updateVotedCountCancel](#document-updateVotedCountCancel)   | Trigger | before, after      |      |
 
 ### 글 조회 <Badge type="danger" text="🚧 초안 작성중" />
 
-#### getDocumentList <Badge type="danger" text="🚧 초안 작성중" /> {#document-getDocumentList}
+#### getDocumentList <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-getDocumentList}
 
-#### getNoticeList <Badge type="danger" text="🚧 초안 작성중" /> {#document-getNoticeList}
+#### getNoticeList <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-getNoticeList}
 
 ---
 
 ### 글 추가, 수정, 삭제 <Badge type="danger" text="🚧 초안 작성중" />
 
-#### insertDocument <Badge type="danger" text="🚧 초안 작성중" /> {#document-insertDocument}
+#### insertDocument <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-insertDocument}
 
 > [!warning]
 > 이 이벤트는 글과 관련된 데이터의 변경사항을 처리하는 트랜잭션 안에서 동작하므로 의도하지 않은 롤백이 발생하지 않도록 주의해야 한다.
@@ -94,7 +94,7 @@
   - DELETED_BY_ADMIN
   - OTHER
 
-#### updateDocument <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateDocument}
+#### updateDocument <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateDocument}
 
 ```php
 /**
@@ -102,7 +102,7 @@
  */
 ```
 
-#### updateReadedCount <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateReadedCount}
+#### updateReadedCount <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateReadedCount}
 
 ```php
 /**
@@ -110,7 +110,7 @@
  */
 ```
 
-#### deleteDocument <Badge type="danger" text="🚧 초안 작성중" /> {#document-deleteDocument}
+#### deleteDocument <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-deleteDocument}
 
 ```php
 /**
@@ -165,7 +165,7 @@
  */
 ```
 
-#### publishDocument <Badge type="tip" text="Since v2.1.12" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-publishDocument}
+#### publishDocument <Badge type="info" text="Trigger" /> <Badge type="tip" text="v2.1.12+" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-publishDocument}
 
 ```php
 /**
@@ -178,41 +178,41 @@
 
 ### 휴지통 <Badge type="danger" text="🚧 초안 작성중" />
 
-#### moveDocumentToTrash <Badge type="danger" text="🚧 초안 작성중" /> {#document-moveDocumentToTrash}
+#### moveDocumentToTrash <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-moveDocumentToTrash}
 
-#### restoreTrash <Badge type="danger" text="🚧 초안 작성중" /> {#document-restoreTrash}
+#### restoreTrash <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-restoreTrash}
 
 ---
 
 ### 복사, 이동 <Badge type="danger" text="🚧 초안 작성중" />
 
-#### moveDocumentModule <Badge type="danger" text="🚧 초안 작성중" /> {#document-moveDocumentModule}
+#### moveDocumentModule <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-moveDocumentModule}
 
-#### copyDocumentModule <Badge type="danger" text="🚧 초안 작성중" /> {#document-copyDocumentModule}
+#### copyDocumentModule <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-copyDocumentModule}
 
-#### copyDocumentModule.each <Badge type="danger" text="🚧 초안 작성중" /> {#document-copyDocumentModule.each}
+#### copyDocumentModule.each <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-copyDocumentModule.each}
 
 ---
 
 ### 신고 <Badge type="danger" text="🚧 초안 작성중" />
 
-#### declaredDocument <Badge type="danger" text="🚧 초안 작성중" /> {#document-declaredDocument}
+#### declaredDocument <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-declaredDocument}
 
-#### declaredDocumentCancel <Badge type="danger" text="🚧 초안 작성중" /> {#document-declaredDocumentCancel}
+#### declaredDocumentCancel <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-declaredDocumentCancel}
 
 ### 댓글 <Badge type="danger" text="🚧 초안 작성중" />
 
-##### getComments <Badge type="danger" text="🚧 초안 작성중" /> {#document-getComments}
+##### getComments <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-getComments}
 
 ### 기타 <Badge type="danger" text="🚧 초안 작성중" />
 
-#### getDocumentMenu <Badge type="danger" text="🚧 초안 작성중" /> {#document-getDocumentMenu}
+#### getDocumentMenu <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-getDocumentMenu}
 
-#### getThumbnail <Badge type="danger" text="🚧 초안 작성중" /> {#document-getThumbnail}
+#### getThumbnail <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-getThumbnail}
 
-#### manage <Badge type="danger" text="🚧 초안 작성중" /> {#document-manage}
+#### manage <Badge type="info" text="Trigger" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-manage}
 
-#### updateVotedCount - 추천/비추천 <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCount}
+#### updateVotedCount - 추천/비추천 <Badge type="info" text="Trigger" /> <Badge type="info" text="before, after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCount}
 
 글을 추천하거나 비추천할 때 발생하는 이벤트이다.
 추천/비추천을 받은 회원 번호와 글 번호를 받을 수 있다.
@@ -254,12 +254,12 @@ function($data) {
 }
 ```
 
-##### updateVotedCountCancel - 추천/비추천 취소 <Badge type="info" text="before | after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCountCancel}
+##### updateVotedCountCancel - 추천/비추천 취소 <Badge type="info" text="before, after" /> <Badge type="danger" text="🚧 초안 작성중" /> {#document-updateVotedCountCancel}
 
 > [!info] 같은 형식의 데이터
 > 이 이벤트와 앞의 `document.updateVotedCount` 이벤트는 데이터 형식이 같다.  
 > 위 예제와 같은 이벤트 리스너에서 `cancel` 속성으로 구분하여 함께 처리할 수 있다.
-> 
+>
 > ```php
 > /**
 >  * @see \DocumentController::updateVotedCountCancel()

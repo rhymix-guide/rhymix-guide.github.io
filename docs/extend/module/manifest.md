@@ -48,7 +48,7 @@ outline: [2, 4]
 
 ## 모듈 설정 (module.xml) <Badge type="danger" text="🚧 초안 작성중" />
 
-### 커스텀 네임스페이스 (namespaces) <Badge type="tip" text="Since v2.1.3" />
+### 커스텀 네임스페이스 (namespaces) <Badge type="tip" text="v2.1.3+" />
 
 라이믹스는 2.1.3부터 네임스페이스를 지원한다.
 
@@ -85,7 +85,7 @@ use VendorName\Example1\Models\ConfigModel;
 
 ---
 
-### 최상위 클래스 (classes) <Badge type="tip" text="Since v2.1.3" />
+### 최상위 클래스 (classes) <Badge type="tip" text="v2.1.3+" />
 
 모듈의 최상위 클래스를 정의하는데 사용한다.
 이 최상위 클래스는 모듈의 설치나 업데이트를 위한 구성을 정의하거나 모듈을 구성하는 정보를 담는 객체를 생성하는데 사용된다.
@@ -193,7 +193,7 @@ class CommonController extends \ModuleObject
 
 ---
 
-### 라우터 (router) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="🚧 초안 작성중" />
+### 라우터 (router) <Badge type="tip" text="v2.1.3+" /> <Badge type="danger" text="🚧 초안 작성중" />
 
 라우터는 액션의 정보에 포함할 수 있다.
 
@@ -221,7 +221,7 @@ class CommonController extends \ModuleObject
 
 ---
 
-### 이벤트 핸들러 (eventHandlers) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="🚧 초안 작성중" />
+### 이벤트 핸들러 (eventHandlers) <Badge type="tip" text="v2.1.3+" /> <Badge type="danger" text="🚧 초안 작성중" />
 
 이벤트 핸들러는 트리거를 등록, 수정, 삭제할 수 있다.
 
@@ -263,7 +263,7 @@ class EventHandler extends \ModuleObject
 
 ---
 
-### 오류 처리 (errorHandlers) <Badge type="tip" text="Since v2.1.3" /> <Badge type="danger" text="🚧 초안 작성중" />
+### 오류 처리 (errorHandlers) <Badge type="tip" text="v2.1.3+" /> <Badge type="danger" text="🚧 초안 작성중" />
 
 ```xml
 <errorHandlers>
