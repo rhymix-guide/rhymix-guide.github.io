@@ -20,12 +20,12 @@
 이벤트는 발생 유형에 따라 두가지 방식으로 구분된다. 트리거(Trigger) 방식과 라이믹스 2.2 버전부터 지원하는 [PSR-14: Event Dispatcher](https://www.php-fig.org/psr/psr-14/)를 구현한 이벤트 방식이다.
 
 |                      | 트리거             | Event Dispatcher <Badge text="v2.2+" type="tip" /> |
-| -------------------- | ------------------ | ------------------------------------------------- |
-| 이벤트 이름          | 임의로 지정된 이름 | 이벤트 클래스의 이름                              |
-| 핸들러 인자          | 트리거에 따라 다름 | 이벤트 클래스의 인스턴스                          |
-| 핸들러 리턴 값       | 트리거에 따라 다름 | 없음                                              |
-| 핸들러에서 시점 구분 | 불가               | 가능 (`getPosition()`)                            |
-| 이벤트 인터페이스    | 없음               | 이벤트 특성에 따른 인터페이스 제공 가능           |
+| -------------------- | ------------------ | -------------------------------------------------- |
+| 이벤트 이름          | 임의로 지정된 이름 | 이벤트 클래스의 이름                               |
+| 핸들러 인자          | 트리거에 따라 다름 | 이벤트 클래스의 인스턴스                           |
+| 핸들러 리턴 값       | 트리거에 따라 다름 | 없음                                               |
+| 핸들러에서 시점 구분 | 불가               | 가능 (`getPosition()`)                             |
+| 이벤트 인터페이스    | 없음               | 이벤트 특성에 따른 인터페이스 제공 가능            |
 
 ::: details 참고 링크
 
@@ -152,12 +152,13 @@ $args = ['key' => 'value'];
 
 이벤트를 구독하는 방법은 모듈에서만 활용 가능한 DB 등록형과 코드의 실행 여부에 따라 달라지는 동적 구독방식이 있다.
 
-|                  | DB 등록형            | 동적 구독형                                   |
-| ---------------- | -------------------- | --------------------------------------------- |
-| 사용 제약        | 모듈에서만 사용 가능 | 모듈, 애드온, 레이아웃, 스킨 등에서 사용 가능 |
-| 이벤트 수신 보장 | 보장 됨              | 구독 시점에 따라 차이가 있음                  |
+|                         | DB 등록형            | 동적 구독형                                   |
+| ----------------------- | -------------------- | --------------------------------------------- |
+| 사용 제약               | 모듈에서만 사용 가능 | 모듈, 애드온, 레이아웃, 스킨 등에서 사용 가능 |
+| 이벤트 수신 보장        | 보장 됨              | 구독 시점에 따라 차이가 있음                  |
+| 핸들러의 다중 시점 구독 | 불가                 | 가능                                          |
 
-DB 등록형은 모듈에서만 활용할 수 있지만 DB에 저장된 핸들러 정보를 사용하므로 이벤트 수신이 보장된다. 동적 구독형은 이벤트가 발생하기 전에 구독해야 하므로 활용에 제약이 있지만 모듈 외의도 활용할 수 있다.
+DB 등록형은 모듈에서만 활용할 수 있지만 DB에 저장된 핸들러 정보를 사용하므로 이벤트 수신이 보장된다. 동적 구독형은 이벤트가 발생하기 전에 구독해야 하므로 활용에 제약이 있지만 모듈 외의도 활용할 수 있다. 단, DB 등록형은 이벤트 유형(Event, Trigger)에 관계 없이 하나의 이벤트 핸들러로 `before`, `after` 시점을 동시에 구독할 수 없으며, 이벤트 핸들러를 분리해야 한다.
 
 ### 이벤트 핸들러
 
@@ -287,6 +288,7 @@ class EventHandler
 
 > [!IMPORTANT] `before`, `after` 속성은 동시에 지정 불가
 > `before`, `after` 속성은 동시에 지정할 수 없으며, `before`, `after` 순으로 `before`가 우선하여 하나만 등록된다.
+>
 > <!-- ref: https://github.com/rhymix/rhymix/blob/8379932dce0e4f4c2654ae4dcb06b2cd3a4d105f/common/framework/parsers/ModuleActionParser.php#L291-L311 -->
 >
 > ::: details beforeAction, afterAction 속성
@@ -295,6 +297,7 @@ class EventHandler
 > 하지만, `before`, `after` 속성으로 `act:모듈이름.액션이름` 이벤트명을 사용할 수 있으므로, 따로 구분하여 사용할 필요는 없다.
 >
 > `before`, `after` 속성과 마찬가지로 `before`, `after`, `beforeAction`, `afterAction` 순서로 우선하여 하나만 등록된다. `beforeAction`과 `afterAction`은 각각 `before`, `after`로 변환되며, `before` 또는 `after` 속성이 있다면 `beforeAction`, `afterAction`은 무시된다.
+>
 > <!-- ref: https://github.com/rhymix/rhymix/blob/8379932dce0e4f4c2654ae4dcb06b2cd3a4d105f/common/framework/parsers/ModuleActionParser.php#L291-L311 -->
 
 > [!CAUTION] ⚠️ 제약 및 주의사항
@@ -315,6 +318,7 @@ class EventHandler
 ### 2.2 버전 미만
 
 #### 이벤트 생성
+
 `ModuleHandler::triggerCall()` 메소드를 사용하여 이벤트를 생성할 수 있다.
 
 ```php
@@ -352,5 +356,7 @@ class EventHandler
 #### 모듈에서 핸들러 등록 {#legacy-event-handler}
 
 ##### getTrigger() {#legacy-event-handler-get}
+
 ##### insertTrigger() {#legacy-event-handler-insert}
+
 ##### deleteTrigger() {#legacy-event-handler-delete}
