@@ -101,6 +101,10 @@ class EventHandler
 
 응답할 최종 컨텐츠를 변경할 수 있다.
 
+보통 HTML 내용을 변경하는 용도로 사용되며, 요청/응답 포맷에 따라 JSON, XML 포맷이 될 수 있다.
+
+HTML 응답 시 `before` 시점에서는 `<body>` 태그 안에 들어갈 레이아웃과 컨텐츠의 일부가 채워져있지만, HTML 전체 구조는 포함되지 않는다. `after` 시점에서는 최종 응답 직전에 호출되며, 전체 HTML 구조를 포함한다.
+
 ```php
 /**
  * return 값은 사용되지 않으며,
@@ -125,6 +129,9 @@ function (string &$content)
     HTML;
 }
 ```
+
+> [!note]
+> `before` 시점에서는 이벤트 처리 순서에 따라 같은 이벤트를 구독하는 위젯과 에디터 컴포넌트 컨텐츠가 렌더링 되어있지 않을 수 있다.
 
 ### 기타 <Badge type="danger" text="🚧 초안 작성중" /> {#core-etc}
 

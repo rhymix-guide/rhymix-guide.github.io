@@ -17,7 +17,7 @@
 
 ## 이벤트 유형
 
-이벤트는 발생 유형에 따라 두가지 방식으로 구분된다. 트리거(Trigger) 방식과 라이믹스 2.2 버전부터 지원하는 [PSR-14: Event Dispatcher](https://www.php-fig.org/psr/psr-14/) 인터페이스를 구현한 이벤트 방식이다.
+이벤트는 발생 유형에 따라 두가지 방식으로 구분된다. 트리거(Trigger) 방식과 라이믹스 2.2 버전부터 지원하는 [PSR-14: Event Dispatcher](https://www.php-fig.org/psr/psr-14/)를 구현한 이벤트 방식이다.
 
 |                      | 트리거             | Event Dispatcher <Badge text="v2.2+" type="tip" /> |
 | -------------------- | ------------------ | ------------------------------------------------- |
@@ -83,29 +83,28 @@ $event = new SomeEvent(SomeEvent::POSITION_BEFORE); // [!code highlight]
 다음 예시의 이벤트의 이름은 `Rhymix\Modules\Example\Events\SomeEvent`이다.
 
 ```php
-namespace Rhymix\Modules\Example\Events;
+namespace Rhymix\Modules\Example\Events; // [!code highlight]
 
-class SomeEvent extends \Rhymix\Framework\AbstractEvent
+class SomeEvent extends \Rhymix\Framework\AbstractEvent // [!code highlight]
 {
-    // ...
 }
 ```
 
 이벤트는 특성에 따라 핸들러에 제공할 데이터를 저장해두거나 인터페이스를 제공할 수 있다.
 
-```php
+```php {16-19}
 namespace Rhymix\Modules\Example\Events;
 
 class SomeEvent extends \Rhymix\Framework\AbstractEvent
 {
-    protected \Rhymix\Framework\Helpers\SessionHelper $member;
+    protected \Rhymix\Framework\Helpers\SessionHelper $member; // [!code highlight]
 
     function __construct(
         string $position = self::POSITION_BEFORE,
         \Rhymix\Framework\Helpers\SessionHelper $member
     ) {
         parent::__construct($position);
-        $this->member = $member;
+        $this->member = $member; // [!code highlight]
     }
 
     // 이벤트 핸들러에 제공할 추가 메소드
@@ -130,7 +129,7 @@ $event = new SomeEvent(SomeEvent::POSITION_BEFORE, $member); // [!code highlight
  * @param string $trigger_name 트리거 이름
  * @param string $called_position 실행 시점 (before, after)
  * @param mixed &$args 핸들러에 전달할 참조
- * @return \BaseObject 핸들러 처리 후 반환된 객체
+ * @return mixed 핸들러 처리 후 반환된 객체
  */
 \Rhymix\Framework\Event::trigger(string $trigger_name, string $called_position, &$args); // [!code highlight]
 
@@ -140,6 +139,14 @@ $called_position = 'before';
 $args = ['key' => 'value'];
 \Rhymix\Framework\Event::trigger($trigger_name, $called_position, $args);
 ```
+
+::: details 트리거를 이벤트로 마이그레이션
+`\Rhymix\Framework\Event::trigger()` 세번째 인자에 Event 인스턴스를 전달하여 트리거 방식을 이벤트 방식으로 마이그레이션할 수 있다. 기존 트리거에서 핸들러에 전달하던 데이터를 이벤트 인스턴스의 속성으로 추가하는 방식으로 호환성을 유지하면서 이벤트 방식으로 전환할 수 있다.
+
+다만, 트리거에서 전달하던 파라메터 유형에 따라 `\ArrayAccess` 인터페이스 등을 구현하거나 `__get()`, `__set()` 매직 메소드를 구현하는 등 이벤트 핸들러에서 기존 트리거의 파라메터를 참조하던 호환성을 유지하기위한 조치가 필요하다. 스칼라 타입의 값만 전달하던 트리거는 프록시를 이중으로 구성하는 등 복잡도가 증가한다.
+
+이러한 처리 후에도 기존 트리거 핸들러들이 전달받은 파라메터의 타입을 검사하는 경우 호환성이 완전히 유지되지 않을 수 있다.
+:::
 
 ## 이벤트 구독
 
@@ -154,13 +161,13 @@ DB 등록형은 모듈에서만 활용할 수 있지만 DB에 저장된 핸들�
 
 ### 이벤트 핸들러
 
-Event Dispatcher 방식의 이벤트 핸들러는 `Rhymix\Framework\AbstractEvent`를 상송한 이벤트 인스턴스를 인자로 받게되며, 트리거 방식의 이벤트 핸들러는 이벤트에 따라 전달되는 인자가 다르다.
+Event Dispatcher 방식의 이벤트 핸들러는 `Rhymix\Framework\AbstractEvent`를 상속한 이벤트 인스턴스를 인자로 받게되며, 트리거 방식의 이벤트 핸들러는 이벤트에 따라 전달되는 인자가 다르다.
 
 ```php
 // Event Dispatcher 방식 이벤트 핸들러 예시
 function (\Rhymix\Modules\Example\Events\SomeEvent $event): void
 {
-    // position 구분하여 처리
+    // 이벤트 발생 시점을 구분하여 처리
     if ($event->getPosition() === $event::POSITION_BEFORE) {
         // before
     } else {
@@ -172,8 +179,9 @@ function (\Rhymix\Modules\Example\Events\SomeEvent $event): void
 function (mixed $arg): mixed
 {
     // 핸들러 로직
+    // 이벤트 발생 시점을 구분할 수 없음
 
-    return $arg; // 필요시 반환값
+    return new \BaseObject(); // 필요시 반환
 }
 ```
 
@@ -182,6 +190,8 @@ function (mixed $arg): mixed
 ```php
 // Event Dispatcher 방식 이벤트 이름 예시
 $event_name = \Rhymix\Modules\Example\Events\SomeEvent::class; // [!code highlight]
+// 또는 문자열로...
+$event_name = 'Rhymix\Modules\Example\Events\SomeEvent'; // [!code highlight]
 
 // 트리거 방식 이벤트 이름 예시
 $event_name = 'moduleName.methodName'; // [!code highlight]
@@ -344,23 +354,3 @@ class EventHandler
 ##### getTrigger() {#legacy-event-handler-get}
 ##### insertTrigger() {#legacy-event-handler-insert}
 ##### deleteTrigger() {#legacy-event-handler-delete}
-
----
-
----
-
----
-
----
-
-> [!TIP] 모듈의 액션이 실행될 때 자동으로 발생하는 이벤트
-> 모듈의 액션이 실행되기 전, 후에 `act:모듈이름.액션이름` 형태의 이벤트가 발생하며, `before`, `after` 시점으로 구분된다.
->
-> 예를들어, 회원이 로그아웃할 때 `member` 모듈의 `procMemberLogout` 액션이 실행되는데, 다음과 같이 이벤트가 발생한다.
->
-> 1. before `act:member.procMemberLogout`
-> 1. before `member.doLogout`
-> 1. after `member.doLogout`
-> 1. after `act:member.procMemberLogout`
->
-> before `act:member.procMemberLogout` 이벤트의 핸들러는 액션이 실행된 모듈의 인스턴스를 인자로 받을 수 있으며, after `act:member.procMemberLogout` 이벤트의 핸들러는 액션 메소드가 반환한 결과(보통 `\BaseObject` 또는 `\Rhymix\Framework\Helpers\DBResultHelper`)를 인자로 받을 수 있다.
