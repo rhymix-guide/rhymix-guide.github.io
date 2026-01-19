@@ -20,12 +20,12 @@
 이벤트는 발생 유형에 따라 두가지 방식으로 구분된다. 트리거(Trigger) 방식과 라이믹스 2.2 버전부터 지원하는 [PSR-14: Event Dispatcher](https://www.php-fig.org/psr/psr-14/)를 구현한 이벤트 방식이다.
 
 |                      | 트리거             | Event Dispatcher <Badge text="v2.2+" type="tip" /> |
-| -------------------- | ------------------ | ------------------------------------------------- |
-| 이벤트 이름          | 임의로 지정된 이름 | 이벤트 클래스의 이름                              |
-| 핸들러 인자          | 트리거에 따라 다름 | 이벤트 클래스의 인스턴스                          |
-| 핸들러 리턴 값       | 트리거에 따라 다름 | 없음                                              |
-| 핸들러에서 시점 구분 | 불가               | 가능 (`getPosition()`)                            |
-| 이벤트 인터페이스    | 없음               | 이벤트 특성에 따른 인터페이스 제공 가능           |
+| -------------------- | ------------------ | -------------------------------------------------- |
+| 이벤트 이름          | 임의로 지정된 이름 | 이벤트 클래스의 이름                               |
+| 핸들러 인자          | 트리거에 따라 다름 | 이벤트 클래스의 인스턴스                           |
+| 핸들러 리턴 값       | 트리거에 따라 다름 | 없음                                               |
+| 핸들러에서 시점 구분 | 불가               | 가능 (`getPosition()`)                             |
+| 이벤트 인터페이스    | 없음               | 이벤트 특성에 따른 인터페이스 제공 가능            |
 
 ::: details 참고 링크
 
@@ -143,9 +143,7 @@ $args = ['key' => 'value'];
 ::: details 트리거를 이벤트로 마이그레이션
 `\Rhymix\Framework\Event::trigger()` 세번째 인자에 Event 인스턴스를 전달하여 트리거 방식을 이벤트 방식으로 마이그레이션할 수 있다. 기존 트리거에서 핸들러에 전달하던 데이터를 이벤트 인스턴스의 속성으로 추가하는 방식으로 호환성을 유지하면서 이벤트 방식으로 전환할 수 있다.
 
-다만, 트리거에서 전달하던 파라메터 유형에 따라 `\ArrayAccess` 인터페이스 등을 구현하거나 `__get()`, `__set()` 매직 메소드를 구현하는 등 이벤트 핸들러에서 기존 트리거의 파라메터를 참조하던 호환성을 유지하기위한 조치가 필요하다. 스칼라 타입의 값만 전달하던 트리거는 프록시를 이중으로 구성하는 등 복잡도가 증가한다.
-
-이러한 처리 후에도 기존 트리거 핸들러들이 전달받은 파라메터의 타입을 검사하는 경우 호환성이 완전히 유지되지 않을 수 있다.
+다만, 트리거에서 전달하던 파라메터 유형에 따라 `\ArrayAccess` 인터페이스 등을 구현하거나 `__get()`, `__set()` 매직 메소드를 구현하는 등 이벤트 핸들러에서 기존 트리거의 파라메터를 참조하던 호환성을 유지하기위한 조치가 필요하다. 이러한 처리 후에도 기존 트리거 핸들러들이 전달받은 파라메터의 타입을 검사하는 경우 호환성이 완전히 유지되지 않을 수 있다.
 :::
 
 ## 이벤트 구독
@@ -287,6 +285,7 @@ class EventHandler
 
 > [!IMPORTANT] `before`, `after` 속성은 동시에 지정 불가
 > `before`, `after` 속성은 동시에 지정할 수 없으며, `before`, `after` 순으로 `before`가 우선하여 하나만 등록된다.
+>
 > <!-- ref: https://github.com/rhymix/rhymix/blob/8379932dce0e4f4c2654ae4dcb06b2cd3a4d105f/common/framework/parsers/ModuleActionParser.php#L291-L311 -->
 >
 > ::: details beforeAction, afterAction 속성
@@ -295,6 +294,7 @@ class EventHandler
 > 하지만, `before`, `after` 속성으로 `act:모듈이름.액션이름` 이벤트명을 사용할 수 있으므로, 따로 구분하여 사용할 필요는 없다.
 >
 > `before`, `after` 속성과 마찬가지로 `before`, `after`, `beforeAction`, `afterAction` 순서로 우선하여 하나만 등록된다. `beforeAction`과 `afterAction`은 각각 `before`, `after`로 변환되며, `before` 또는 `after` 속성이 있다면 `beforeAction`, `afterAction`은 무시된다.
+>
 > <!-- ref: https://github.com/rhymix/rhymix/blob/8379932dce0e4f4c2654ae4dcb06b2cd3a4d105f/common/framework/parsers/ModuleActionParser.php#L291-L311 -->
 
 > [!CAUTION] ⚠️ 제약 및 주의사항
@@ -315,6 +315,7 @@ class EventHandler
 ### 2.2 버전 미만
 
 #### 이벤트 생성
+
 `ModuleHandler::triggerCall()` 메소드를 사용하여 이벤트를 생성할 수 있다.
 
 ```php
@@ -352,5 +353,7 @@ class EventHandler
 #### 모듈에서 핸들러 등록 {#legacy-event-handler}
 
 ##### getTrigger() {#legacy-event-handler-get}
+
 ##### insertTrigger() {#legacy-event-handler-insert}
+
 ##### deleteTrigger() {#legacy-event-handler-delete}
