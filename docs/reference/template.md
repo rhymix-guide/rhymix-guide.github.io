@@ -35,7 +35,7 @@ $name = 'Rhymix';
 ?>
 
 Hello, {{ $name }}!
--> Hello, Rhymix! // [!code highlight]
+-> Hello, Rhymix! <!-- [!code highlight] -->
 ```
 
 HTML 태그를 인코딩하지 않고 그대로 출력하려면 `{!! $value !!}` 구문을 사용하면 된다.
@@ -46,34 +46,21 @@ $name = '<strong>Rhymix</strong>';
 ?>
 
 {{ $html }}
--> &lt;strong&gt;Rhymix&lt;/strong&gt; // [!code highlight]
+-> &lt;strong&gt;Rhymix&lt;/strong&gt; <!-- [!code highlight] -->
 
 {!! $html !!}
--> <strong>Rhymix</strong> // [!code highlight]
+-> <strong>Rhymix</strong> <!-- [!code highlight] -->
 ```
+### Modifier <Badge type="warning" text="권장하지 않음" />
 
-Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. `|` 파이프 기호를 사용하여 Modifier를 사용할 수 있다. 문자열을 인코딩하거나 날짜 포맷, `implode()`, `json_encode()` 등의 기능을 간편하게 사용할 수 있다.
+Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. 출력 값 뒤에 파이프 기호(`|`)를 사용하고, 문자열을 인코딩하거나 날짜 포맷, `implode()`, `json_encode()` 등의 기능을 간편하게 사용할 수 있다.
 
 <span v-pre>`{{ $value | modifier }}`</span> 형태로 사용한다.
 
-```blade
-{{ strtoupper('Hello') }}
-{{ 'Hello' | upper }}
--> 'HELLO' // [!code highlight]
-
-{{ implode(', ', ['Hello', 'World']) }}
-{{ ['Hello', 'World'] | join }}
--> 'Hello, World' // [!code highlight]
-
-{{ trim('     Hello     ') }}
-{{ '     Hello     ' | trim }}
--> 'Hello' // [!code highlight]
-```
-
-Modifier는 간단하게 사용할 수 있고 일부 옵션도 지원하지만, 대다수 PHP 함수로 쉽게 대체 가능하므로 Modifier에 옵션을 사용하기 보다는 PHP 함수를 사용하는 것을 권장한다.
-
-::: tip -> [Modifier 자세히 보기](/reference/template/modifier)
-:::
+> [!WARNING]
+> Modifier는 간단하게 사용할 수 있고 일부 옵션도 지원하지만, `|` 연산자와 혼동할 수 있어서 의도와 다르게 해석될 수 있다. PHP 함수나 헬퍼 함수로 쉽게 대체 가능하므로 사용을 권장하지 않는다.
+>
+> -> [Modifier 자세히 보기](https://rhymix.org/manual/theme/template_v2#출력_필터)
 
 ## 제어문
 
