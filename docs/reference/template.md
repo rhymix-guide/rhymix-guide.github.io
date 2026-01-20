@@ -1,8 +1,6 @@
-# 템플릿 문법 (v2) <Badge type="tip" text="Since Rhymix v2.1" />
+# 템플릿 문법 (v2) <Badge type="tip" text="v2.1+" />
 
-::: danger
-🚧 이 문서는 초안을 작성중인 문서이다.
-:::
+> [!danger] 🚧 이 문서는 초안을 작성중인 문서이다.
 
 템플릿 문법(v2)은 [Laravel Blade](https://laravel.com/docs/10.x/blade) 문법을 차용하여 만들어졌다. PHP 문법과 매우 비슷하기 때문에 쉽게 익힐 수 있고, 유용한 기능도 제공한다.
 
@@ -15,17 +13,17 @@
 - [VSCode - Laravel Blade formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter) - 코드 형식 포맷
   :::
 
-::: info 공식 매뉴얼 참고를 권장 함
-이 가이드는 템플릿 기능을 완전히 설명하지 못할 수 있고, v1 템플릿 문법과 호환되는 내용은 설명하지 않았으므로 공식 매뉴얼 또한 참고하는 것을 권장한다.
+> [!info]
+> Blade 문법을 차용하여 템플릿 파서는 Rhymix에 맞게 새로 작성되었고, Rhymix에 특화된 지시자를 제공한다.
+>
+> 이 가이드는 v1 템플릿 문법을 비롯해 템플릿 기능을 모두 설명하지않으므로, 공식 매뉴얼도 참고하는 것을 권장한다.
+>
+> -> [Rhymix 매뉴얼 - 템플릿 문법 v2](https://rhymix.org/manual/theme/template_v2)
 
--> [Rhymix 매뉴얼 - 템플릿 문법 v2](https://rhymix.org/manual/theme/template_v2)
-
-:::
-
-::: info
-Blade 문법을 차용하여 템플릿 파서는 Rhymix에 맞게 새로 작성되었다.  
-Laravel의 기능에 특화된 지시자는 지원하지 않으며, 대신 Rhymix에 특화된 지시자를 제공한다.
-:::
+> [!important]
+> `{`, `}` 문자 사용 시 오류가 발생할 수 있다. 템플릿에서 자바스크립트 코드를 사용 시 주로 발생한다.
+>
+> v1 템플릿 문법의 일부를 혼합하여 지원하는 것의 영향이며, 라이믹스 버전에 따라 오류 발생 여부가 다르므로 라이믹스 2.1.x 버전대에서는 특히 주의해야 한다.
 
 ## 출력
 
@@ -51,6 +49,7 @@ $name = '<strong>Rhymix</strong>';
 {!! $html !!}
 -> <strong>Rhymix</strong> <!-- [!code highlight] -->
 ```
+
 ### Modifier <Badge type="warning" text="권장하지 않음" />
 
 Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. 출력 값 뒤에 파이프 기호(`|`)를 사용하고, 문자열을 인코딩하거나 날짜 포맷, `implode()`, `json_encode()` 등의 기능을 간편하게 사용할 수 있다.
@@ -64,7 +63,7 @@ Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. 출�
 
 ## 제어문
 
-### @if
+### @if / @elseif / @else
 
 ```blade
 @if ($condition1)
@@ -187,9 +186,9 @@ Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. 출�
 
 :::
 
-#### continue / break
+#### @continue / @break
 
-#### forelse
+#### @forelse
 
 `foreach` 반복문으로 배열의 데이터를 출력할 때, 배열이 비어있으면 "결과 없음"과 같은 메시지를 출력해야 한다면 `@if` / `@foreach` 구문을 단순하게 줄여주는 `@forelse` 구문을 사용할 수 있다.
 
@@ -211,9 +210,9 @@ Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. 출�
 @endforelse
 ```
 
-### $loop 변수
+#### $loop 변수
 
-### switch
+### @switch
 
 ```blade
 @switch($i)
@@ -249,8 +248,10 @@ Modifier는 출력하려는 값을 변경하여 출력하는 기능이다. 출�
 
 :::
 
-## include
+## @include
 
-## load
+## @php
 
-## @class
+## @use
+
+## @load
