@@ -175,9 +175,6 @@ export default mergeConfig(customConfig, defineConfig({
             {
               text: '템플릿',
               link: '/reference/template',
-              items: [
-                { text: 'Modifier', link: '/reference/template/modifier' },
-              ]
             },
             {
               text: '데이터베이스', link: '/reference/database',
